@@ -7,7 +7,7 @@
 
 ## Project Overview
 
-This project implements the `toUpper()` function — commonly found in programming languages like Python, C++, and Java — **using only primitive digital logic gates**.  
+This project implements the `toUpper()` function commonly found in programming languages like Python, C++, and Java **using only primitive digital logic gates**.  
 The circuit converts lowercase ASCII letters (`a–z`) to uppercase (`A–Z`) by flipping **bit A5** when the input value lies within the binary range for lowercase letters (`01100001`–`01111010`).
 
 Every other character, number, or symbol passes through unchanged.

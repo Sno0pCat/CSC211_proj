@@ -5,8 +5,8 @@
 // Project 1 – toUpper() Function Using Primitive Gates
 
 module tb_to_upper;
-  reg  [7:0] IN;
-  wire [7:0] OUT;
+  reg  [7:0] ascii_in;
+  wire [7:0] ascii_out;
 
 // Change the DELAY value below to test timing thresholds.
 //   25 ns → Correct operation (Screenshot A)
@@ -14,13 +14,13 @@ module tb_to_upper;
 //   15 ns or below → Failure (Screenshot B)
   integer DELAY = 15;
 
-  to_upper_gate DUT(.IN(IN), .OUT(OUT));
+  to_upper_gate DUT(.ascii_in(ascii_in), .ascii_out(ascii_out));
 
   // print for char (shows hex and ASCII)
   task show_io;
     begin
       $display("[%0t ns] IN=0x%0h (%0d) %s  OUT=0x%0h (%0d) %s",
-               $time, IN, IN, printable(IN), OUT, OUT, printable(OUT));
+               $time, ascii_in, ascii_in, printable(ascii_in), ascii_out, ascii_out, printable(ascii_out));
     end
   endtask
 
@@ -36,7 +36,7 @@ module tb_to_upper;
     $dumpfile("to_upper.vcd");
     $dumpvars(0, tb_to_upper);
 
-    IN = 8'h00;
+    ascii_in = 8'h00;
 
     //testset 
     drive(8'd40);   // '('
@@ -66,7 +66,7 @@ module tb_to_upper;
 
   task drive(input [7:0] val);
     begin
-      IN = val;
+      ascii_in = val;
       #(DELAY);
       show_io();
     end
